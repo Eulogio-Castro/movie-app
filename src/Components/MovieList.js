@@ -74,11 +74,9 @@ const MovieList = (props) => {
     
     return (
         <> 
-        {props.movies.map((movie) => (
-            
-            
-
-
+        {
+        (props.movies)?
+        props.movies.map((movie) => (
             <PosterWrapper className='image-container d-flex'>
                 <Poster src = {movie.Poster} alt = "Poster"></Poster>
                 <PosterInfoOverlay> 
@@ -93,7 +91,8 @@ const MovieList = (props) => {
                     <FavoriteComponent />
                 </PosterFavoriteOverlay>
             </PosterWrapper>
-        ))};
+        )) : {}
+        };
     </>
 
     );
