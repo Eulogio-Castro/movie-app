@@ -4,6 +4,7 @@ import MoveList from './Components/MovieList';
 import Header from './Components/Header';
 import styled from 'styled-components';
 import { Row } from 'react-bootstrap';
+import staticMovies from './StaticMovieList.json'
 import SearchBar from './Components/SearchBar';
 import AddFavorite from './Components/AddFavorite';
 import './App.css';
@@ -26,7 +27,7 @@ const LOCAL_STORAGE_KEY = 'react-movie-app-favorites';
 
 
 function App() {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState(staticMovies);
   const [searchValue, setSearchValue] = useState('');
   const [favorites, setFavorites] = useState([])
 
