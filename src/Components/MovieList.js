@@ -9,9 +9,12 @@ const PosterWrapper = styled.div`
     padding-top: 25px;
     padding-bottom: 25px;
     color: white;
+    max-height: 400px;
 `;
 
 const Poster = styled.img`
+    width: 250px;
+    height: 350px;
     transition: transform 0.2s;
     ${PosterWrapper}:hover & {
         cursor: pointer;
@@ -20,7 +23,8 @@ const Poster = styled.img`
 `;
 
 const PosterTitle = styled.p`
-    font-size: 30px;
+    font-size: larger;
+    max-height: 100px;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     vertical-align: middle;
@@ -30,6 +34,15 @@ const PosterYear = styled.p`
     font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
     vertical-align: middle;
+`;
+
+const PosterOverview = styled.p`
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    vertical-align: middle;
+    top: 0;
+    max-height: 175px;
+    overflow-y: scroll;
 `;
 
 
@@ -70,6 +83,7 @@ const PosterFavoriteOverlay = styled.div`
 
 
 const MovieList = (props) => {
+    
     const FavoriteComponent = props.favoriteComponent;
 
         if(props.movies){
@@ -79,12 +93,11 @@ const MovieList = (props) => {
                     {
                         props.movies.map((movie) => (
                         <PosterWrapper className='image-container d-flex'>
-                            <Poster src = {movie.Poster} alt = "Poster"></Poster>
+                            <Poster src = {`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt = "Poster"></Poster>
                             <PosterInfoOverlay> 
-                                <PosterTitle>{movie.Title}</PosterTitle>
-                                <PosterYear>({movie.Year})</PosterYear>
-                                
-                                <MovieDetails movie = {movie}/>
+                                <PosterTitle>{movie.original_title}</PosterTitle>
+                                <PosterYear>({movie.release_date})</PosterYear>
+                                <PosterOverview>{movie.overview}</PosterOverview>
 
                             </PosterInfoOverlay>
                             <PosterFavoriteOverlay 

@@ -19,11 +19,14 @@ const HeaderRow = styled(Row)`
 const MovieRowWrapper = styled(Row)`
   overflow-x: auto;
   flex-wrap: nowrap;
+  max-height: 400px;
+  overflow-y: hidden;
 `;
 
 
-const API_KEY = `aab7b9c8`;
-const API_APPEND = `&apikey=${API_KEY}`;
+const API_KEY = `&apikey=aec16d47eeda7d5002c6079fdf3c13dd`;
+const API_APPEND = `https://api.themoviedb.org/3/search/movie?`;
+const HEADERS = {"Authorization" : "Bearer aec16d47eeda7d5002c6079fdf3c13dd","Content-Type": "application/json;charset=utf-8"}
 const LOCAL_STORAGE_KEY = 'react-movie-app-favorites';
 
 
@@ -34,13 +37,14 @@ function App() {
 
   const getMovieRequest = async (searchValue) => {
 
-    const searchURL = `https://www.omdbapi.com/?s=${searchValue}${API_APPEND}`;
+    const searchURL = `
+    https://api.themoviedb.org/3/search/movie?api_key=aec16d47eeda7d5002c6079fdf3c13dd&language=en-US&query=${searchValue}&page=1&include_adult=false`;
     const response = await fetch(searchURL);
     const responseJSON = await response.json()
 
     console.log(responseJSON);
-    if(responseJSON.Search){
-      setMovies(responseJSON.Search);
+    if(responseJSON.results){
+      setMovies(responseJSON.results);
     }
     
 
