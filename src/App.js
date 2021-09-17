@@ -66,10 +66,17 @@ function App() {
     };
 
     const addFavoriteMovie = (movie) => {
+
       if(favorites){
-        const newFavoriteList = [...favorites, movie];
-        setFavorites(newFavoriteList);
-        saveToLocalStorage(newFavoriteList);
+        if(favorites.includes(movie))
+        {
+          setFavorites(favorites);
+        }
+        else{
+          const newFavoriteList = [...favorites, movie];
+          setFavorites(newFavoriteList);
+          saveToLocalStorage(newFavoriteList);
+        }
       }
 
       else{
@@ -81,8 +88,7 @@ function App() {
     };
 
     const removeFavoriteMovie = (movie) =>{
-      const newFavoriteList = favorites.filter(
-        (favorite) => favorite.imdbID !== movie.imdbID);
+      const newFavoriteList = favorites.filter( (favorite) => favorite.imdbID !== movie.imdbID);
       setFavorites(newFavoriteList);
       saveToLocalStorage(newFavoriteList);
     };
