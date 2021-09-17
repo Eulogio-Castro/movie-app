@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 import MovieDetails from "./MovieDetails";
 
@@ -44,7 +44,6 @@ const PosterInfoOverlay = styled.div`
     height: 100%;
     text-align:center;
     left: 0;
-
     ${PosterWrapper}:hover & {
         opacity: 1;
     }
@@ -61,11 +60,11 @@ const PosterFavoriteOverlay = styled.div`
     padding: 20px;
     text-align:center;
     left: 0;
-
     ${PosterWrapper}:hover & {
         opacity: 1;
     }
 `;
+
 
 
 
@@ -78,13 +77,14 @@ const MovieList = (props) => {
             return (
                 <> 
                     {
-                    props.movies.map((movie) => (
+                        props.movies.map((movie) => (
                         <PosterWrapper className='image-container d-flex'>
                             <Poster src = {movie.Poster} alt = "Poster"></Poster>
                             <PosterInfoOverlay> 
                                 <PosterTitle>{movie.Title}</PosterTitle>
                                 <PosterYear>({movie.Year})</PosterYear>
-                                <MovieDetails movie = {movie}></MovieDetails>
+                                
+                                <MovieDetails movie = {movie}/>
 
                             </PosterInfoOverlay>
                             <PosterFavoriteOverlay 
@@ -93,7 +93,7 @@ const MovieList = (props) => {
                                 <FavoriteComponent />
                             </PosterFavoriteOverlay>
                         </PosterWrapper>
-                    ))
+                        ))
                     }
                 </>
 
@@ -103,6 +103,8 @@ const MovieList = (props) => {
         else{
             return(null);
         }
+
+        
 };
    
 
