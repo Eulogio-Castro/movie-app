@@ -100,6 +100,9 @@ const MovieList = (props) => {
             );
 
         }
+        else{
+            return(null);
+        }
 };
    
 
