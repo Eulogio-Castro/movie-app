@@ -19,7 +19,7 @@ class MovieDetails extends Component{
 
     async componentDidMount() {
         try{
-            const plotURL = `http://www.omdbapi.com/?i=${this.props.movie.imdbID}${API_APPEND}`
+            const plotURL = `https://www.omdbapi.com/?i=${this.props.movie.imdbID}${API_APPEND}`
             const result = await fetch(plotURL);
             const resultJSON = await result.json();
             
