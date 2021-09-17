@@ -5,11 +5,6 @@ import styled from "styled-components";
 const API_KEY = `aab7b9c8`;
 const API_APPEND = `&apikey=${API_KEY}`;
 
-const plotParagraph = styled.p`
-    font-size: 24px;
-    font-family: Arial, Helvetica, sans-serif;
-`;
-
 
 class MovieDetails extends Component{ 
     constructor(){

@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MoveList from './Components/MovieList';
-import staticMovies from './StaticMovieList.json'
 import Header from './Components/Header';
 import styled from 'styled-components';
 import { Row } from 'react-bootstrap';
