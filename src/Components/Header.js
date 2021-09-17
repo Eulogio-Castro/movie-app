@@ -5,7 +5,7 @@ const Heading = styled.h1`
     color: white;
     width: fit-content;
     padding: 20px;
-    margin-right: 300px;
+    margin-right: 150px;
 `;
 
 
