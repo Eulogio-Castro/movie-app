@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import styled from "styled-components";
 
 
 const API_KEY = `aab7b9c8`;
@@ -53,7 +52,7 @@ class MovieDetails extends Component{
             <div style= {{overflow:"none"}}><p>{data.Plot}</p></div>
             
             </>
-        )
+        );
 
     }
     

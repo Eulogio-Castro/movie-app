@@ -1,3 +1,4 @@
+import { render } from "@testing-library/react";
 import React from "react";
 import styled from "styled-components";
 import MovieDetails from "./MovieDetails";
@@ -71,32 +72,35 @@ const PosterFavoriteOverlay = styled.div`
 
 const MovieList = (props) => {
     const FavoriteComponent = props.favoriteComponent;
-    
-    return (
-        <> 
-        {
-        (props.movies)?
-        props.movies.map((movie) => (
-            <PosterWrapper className='image-container d-flex'>
-                <Poster src = {movie.Poster} alt = "Poster"></Poster>
-                <PosterInfoOverlay> 
-                    <PosterTitle>{movie.Title}</PosterTitle>
-                    <PosterYear>({movie.Year})</PosterYear>
-                    <MovieDetails movie = {movie}></MovieDetails>
 
-                </PosterInfoOverlay>
-                <PosterFavoriteOverlay 
-                onClick = {() =>props.handleFavoritesClick(movie)}
-                >
-                    <FavoriteComponent />
-                </PosterFavoriteOverlay>
-            </PosterWrapper>
-        )) : {}
-        };
-    </>
+        if(props.movies){
 
-    );
-    
+            return (
+                <> 
+                    {
+                    props.movies.map((movie) => (
+                        <PosterWrapper className='image-container d-flex'>
+                            <Poster src = {movie.Poster} alt = "Poster"></Poster>
+                            <PosterInfoOverlay> 
+                                <PosterTitle>{movie.Title}</PosterTitle>
+                                <PosterYear>({movie.Year})</PosterYear>
+                                <MovieDetails movie = {movie}></MovieDetails>
+
+                            </PosterInfoOverlay>
+                            <PosterFavoriteOverlay 
+                            onClick = {() =>props.handleFavoritesClick(movie)}
+                            >
+                                <FavoriteComponent />
+                            </PosterFavoriteOverlay>
+                        </PosterWrapper>
+                    ))
+                    }
+                </>
+
+            );
+
+        }
 };
+   
 
 export default MovieList;
