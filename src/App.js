@@ -89,7 +89,7 @@ function App() {
     };
 
     const removeFavoriteMovie = (movie) =>{
-      const newFavoriteList = favorites.filter( (favorite) => favorite.imdbID !== movie.imdbID);
+      const newFavoriteList = favorites.filter( (favorite) => favorite.id !== movie.id);
       setFavorites(newFavoriteList);
       saveToLocalStorage(newFavoriteList);
     };
